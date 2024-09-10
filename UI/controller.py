@@ -20,4 +20,8 @@ class Controller:
             self._view.update_page()
             return
 
-        pass
+        self._view._txt_result.controls.append({self._model.getNumNodes()})
+        self._view._txt_result.controls.append({self._model.getNumEdges()})
+
+        self._view.update_page()
+

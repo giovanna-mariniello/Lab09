@@ -23,8 +23,8 @@ class DAO():
 
         return result
 
-    @classmethod
-    def get_all_rotte(cls):
+    @staticmethod
+    def get_all_rotte():
         cnx = DBConnect.get_connection()
         result = []
 
@@ -36,7 +36,7 @@ class DAO():
         cursor.execute(query)
 
         for row in cursor:
-            result.append(Rotta(**row))
+          result.append(Rotta(**row))
 
         cursor.close()
         cnx.close()

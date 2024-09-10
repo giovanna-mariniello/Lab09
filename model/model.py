@@ -18,18 +18,23 @@ class Model:
         self._grafo.add_nodes_from(self._nodes)
 
         self._edges = DAO.get_all_rotte()
-        filtrata = self.filtra_edges(self._edges)
-        self._grafo.add_edges_from(filtrata)
+
+        for edge in self._edges:
+            w = edge.avgDistance
+            a1Obj = self._idMap[edge.a1]
+            a2obj = self._idMap[edge.a2]
+            if w > distanza_minima:
+                self._grafo.add_edge(a1Obj, a2obj, weight=w)
+                #print("Arco aggiunto: ", edge)
 
     def riempi_idMap(self):
         for n in self._nodes:
             self._idMap[n.ID] = n
 
-    def filtra_edges(self, lista_edges):
-        filtrata = set()
-        for e1 in lista_edges:
-            for e2 in lista_edges:
-                if e1 == e2:
-                    filtrata.add(e1)
 
-        return filtrata
+    def getNumEdges(self):
+        return self._grafo.number_of_edges()
+
+    def getNumNodes(self):
+        return self._grafo.number_of_nodes()
+

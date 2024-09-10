@@ -31,7 +31,7 @@ class Rotta:
         return self._dist_tot
 
     @dist_tot.setter
-    def totDistance(self, value):
+    def dist_tot(self, value):
         self._dist_tot = value
 
     @property
@@ -52,3 +52,6 @@ class Rotta:
 
     def __eq__(self, other):
         return ((self.a1 == other.a2) and (self.a2 == other.a1))
+
+    def __hash__(self):
+        return hash(self.a1, self.a2)
