@@ -51,7 +51,7 @@ class Rotta:
         self._avgDistance = value
 
     def __eq__(self, other):
-        return ((self.a1 == other.a2) and (self.a2 == other.a1))
+        return (self.a1 == other.a2) and (self.a2 == other.a1)
 
     def __hash__(self):
-        return hash(self.a1, self.a2)
+        return hash(self.a1), hash(self.a2)

@@ -36,7 +36,7 @@ class DAO():
         cursor.execute(query)
 
         for row in cursor:
-          result.append(Rotta(**row))
+            result.append(Rotta(**row))
 
         cursor.close()
         cnx.close()

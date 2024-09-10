@@ -20,8 +20,15 @@ class Controller:
             self._view.update_page()
             return
 
-        self._view._txt_result.controls.append({self._model.getNumNodes()})
-        self._view._txt_result.controls.append({self._model.getNumEdges()})
+        self._view._txt_result.controls.clear()
+        self._model.crea_grafo(float(distanza_minima))
+        self._view._txt_result.controls.append(ft.Text("Grafo correttamente creato!"))
+        self._view._txt_result.controls.append(ft.Text(f"Numero di nodi: {self._model.getNumNodes()}"))
+        self._view._txt_result.controls.append(ft.Text(f"Numero di archi: {self._model.getNumEdges()}"))
 
+        self._view._txt_result.controls.append(ft.Text(""))
+        allEdges = self._model.getAllEdges()
+        for e in allEdges:
+            self._view._txt_result.controls.append(ft.Text(f"{e[0]} -> {e[1]}    ---     Distanza media: {self._model.getDistMedia(e[0], e[1])}"))
         self._view.update_page()
 

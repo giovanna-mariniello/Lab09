@@ -22,9 +22,9 @@ class Model:
         for edge in self._edges:
             w = edge.avgDistance
             a1Obj = self._idMap[edge.a1]
-            a2obj = self._idMap[edge.a2]
+            a2Obj = self._idMap[edge.a2]
             if w > distanza_minima:
-                self._grafo.add_edge(a1Obj, a2obj, weight=w)
+                self._grafo.add_edge(a1Obj, a2Obj, weight=w)
                 #print("Arco aggiunto: ", edge)
 
     def riempi_idMap(self):
@@ -37,4 +37,11 @@ class Model:
 
     def getNumNodes(self):
         return self._grafo.number_of_nodes()
+
+    def getAllEdges(self):
+        return self._grafo.edges
+
+    def getDistMedia(self, v1, v2):
+        data = self._grafo.get_edge_data(v1, v2)
+        return data["weight"]
 
